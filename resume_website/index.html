@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahdi - Backend Developer | توسعه‌دهنده بک‌اند</title>
+    <meta name="description" content="Mahdi - Backend Developer specializing in ASP.NET Core, C#, and modern web technologies">
+    <meta name="keywords" content="Backend Developer, ASP.NET Core, C#, React Native, TypeScript">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Vazir Matn Font -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <i class="fas fa-code"></i>
+                Mahdi Afshari
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">
+                            <i class="fas fa-home"></i>
+                            خانه
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">
+                            <i class="fas fa-user"></i>
+                            درباره من
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">
+                            <i class="fas fa-cogs"></i>
+                            مهارت‌ها
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">
+                            <i class="fas fa-folder-open"></i>
+                            پروژه‌ها
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">
+                            <i class="fas fa-envelope"></i>
+                            تماس
+                        </a>
+                    </li>
+                </ul>
+                
+                <div class="language-toggle ms-3">
+                    <button class="btn btn-outline-light btn-sm" id="langToggle">
+                        <i class="fas fa-language"></i>
+                        EN
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-background">
+            <div class="particles" id="particles"></div>
+            <div class="geometric-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+                <div class="shape shape-4"></div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="hero-content">
+                        <h1 class="hero-title">
+                            سلام، من <span class="highlight">مهدی</span> هستم
+                        </h1>
+                        <h2 class="hero-subtitle">
+                            <span class="typing-text" id="typingText"></span>
+                        </h2>
+                        <p class="hero-description">
+                            "کد مثل طنز است. وقتی باید توضیحش بدی، بده."
+                        </p>
+                        <div class="hero-buttons">
+                            <a href="#about" class="btn btn-primary btn-lg me-3">
+                                <i class="fas fa-user"></i>
+                                بیشتر بدانید
+                            </a>
+                            <a href="#contact" class="btn btn-outline-light btn-lg">
+                                <i class="fas fa-envelope"></i>
+                                تماس با من
+                            </a>
+                        </div>
+                        <div class="social-links">
+                            <a href="https://t.me/cobramahdi" target="_blank" class="social-link">
+                                <i class="fab fa-telegram"></i>
+                            </a>
+                            <a href="https://github.com/AdeptMehdi" target="_blank" class="social-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" target="_blank" class="social-link">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="hero-image">
+                        <div class="profile-container">
+                            <div class="profile-image">
+                                <img src="images/profile.png" alt="Mahdi Profile" class="img-fluid">
+                                <div class="profile-glow"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5" data-aos="fade-up">
+                    <h2 class="section-title">
+                        <i class="fas fa-user"></i>
+                        درباره من
+                    </h2>
+                    <p class="section-subtitle">بیشتر با من آشنا شوید</p>
+                </div>
+            </div>
+            
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="about-content">
+                        <h3>توسعه‌دهنده بک‌اند | دانشجوی مهندسی نرم‌افزار</h3>
+                        <p class="about-description">
+                            من یک توسعه‌دهنده بک‌اند با تخصص در ASP.NET Core و C# هستم که در حال حاضر در رشته مهندسی نرم‌افزار کامپیوتر تحصیل می‌کنم. تجربه من شامل توسعه وب اپلیکیشن‌های پیچیده با معماری چند لایه، کار با دیتابیس‌های مختلف، و پیاده‌سازی سیستم‌های امنیتی مدرن است. همچنین در حال یادگیری React Native برای توسعه اپلیکیشن‌های موبایل هستم و به ساخت نرم‌افزارهای مقیاس‌پذیر علاقه‌مند هستم.
+                        </p>
+                        
+                        <div class="about-info">
+                            <div class="info-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>ایران</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>تلگرام: @cobramahdi</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>دانشجوی کامپیوتر نرم‌افزار</span>
+                            </div>
+                        </div>
+                        
+                        <div class="about-stats">
+                            <div class="stat-item">
+                                <h4>3+</h4>
+                                <p>سال تجربه</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>10+</h4>
+                                <p>پروژه تکمیل شده</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>5+</h4>
+                                <p>تکنولوژی اصلی</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="about-features">
+                        <!-- Expertise Cards -->
+                        <div class="expertise-grid">
+                            <div class="expertise-card" data-aos="zoom-in" data-aos-delay="100">
+                                <div class="expertise-icon">
+                                    <i class="fas fa-server"></i>
+                                </div>
+                                <h5>توسعه بک‌اند</h5>
+                                <p>تخصص در ASP.NET Core و معماری نرم‌افزار</p>
+                            </div>
+                            
+                            <div class="expertise-card" data-aos="zoom-in" data-aos-delay="200">
+                                <div class="expertise-icon">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <h5>مدیریت دیتابیس</h5>
+                                <p>کار با SQL Server، MySQL و Entity Framework</p>
+                            </div>
+                            
+                            <div class="expertise-card" data-aos="zoom-in" data-aos-delay="300">
+                                <div class="expertise-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <h5>امنیت نرم‌افزار</h5>
+                                <p>پیاده‌سازی JWT، RSA و سیستم‌های احراز هویت</p>
+                            </div>
+                            
+                            <div class="expertise-card" data-aos="zoom-in" data-aos-delay="400">
+                                <div class="expertise-icon">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </div>
+                                <h5>توسعه موبایل</h5>
+                                <p>یادگیری React Native و TypeScript</p>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5" data-aos="fade-up">
+                    <h2 class="section-title">
+                        <i class="fas fa-cogs"></i>
+                        مهارت‌های من
+                    </h2>
+                    <p class="section-subtitle">تکنولوژی‌هایی که با آن‌ها کار می‌کنم</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <!-- Backend Skills -->
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="skill-category">
+                        <div class="category-header">
+                            <i class="fas fa-server"></i>
+                            <h4>بک‌اند</h4>
+                        </div>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <i class="fab fa-microsoft"></i>
+                                <span>#C</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-code"></i>
+                                <span>.NET Core</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-database"></i>
+                                <span>Entity Framework</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-node-js"></i>
+                                <span>Express.js</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Frontend & Mobile Skills -->
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="skill-category">
+                        <div class="category-header">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h4>فرانت‌اند و موبایل</h4>
+                        </div>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <i class="fab fa-react"></i>
+                                <span>یادگیری React Native</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-js"></i>
+                                <span> یادگیری TypeScript</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-html5"></i>
+                                <span>HTML5</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-css3-alt"></i>
+                                <span>CSS3</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Database & Security -->
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="skill-category">
+                        <div class="category-header">
+                            <i class="fas fa-shield-alt"></i>
+                            <h4>دیتابیس و امنیت</h4>
+                        </div>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <i class="fas fa-database"></i>
+                                <span>MySQL</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-database"></i>
+                                <span>SQL Server</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-key"></i>
+                                <span>JWT</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-lock"></i>
+                                <span>RSA</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Languages -->
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="skill-category">
+                        <div class="category-header">
+                            <i class="fas fa-language"></i>
+                            <h4>زبان‌ها</h4>
+                        </div>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <i class="fas fa-globe"></i>
+                                <span>انگلیسی | متوسط</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Software Skills -->
+                <div class="col-lg-12 col-md-12 mb-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="skill-category software-skills-full">
+                        <div class="category-header text-center mb-4">
+                            <i class="fas fa-laptop-code"></i>
+                            <h4>مهارت‌های نرم‌افزاری</h4>
+                        </div>
+                        <div class="skills-progress-grid">
+                            <div class="skill-progress-item" data-aos="fade-up" data-aos-delay="50">
+                                <div class="skill-info">
+                                    <span><i class="fab fa-microsoft"></i> #C</span>
+                                    <span class="skill-level">پیشرفته</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="90"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-progress-item" data-aos="fade-up" data-aos-delay="100">
+                                <div class="skill-info">
+                                    <span><i class="fas fa-code"></i> ASP.Net</span>
+                                    <span class="skill-level">متوسط</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="75"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-progress-item" data-aos="fade-up" data-aos-delay="150">
+                                <div class="skill-info">
+                                    <span><i class="fas fa-code"></i> .Net Core / .Net</span>
+                                    <span class="skill-level">متوسط</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="75"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-progress-item" data-aos="fade-up" data-aos-delay="200">
+                                <div class="skill-info">
+                                    <span><i class="fab fa-python"></i> Python</span>
+                                    <span class="skill-level">متوسط</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="70"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-progress-item" data-aos="fade-up" data-aos-delay="250">
+                                <div class="skill-info">
+                                    <span><i class="fab fa-js"></i> JavaScript</span>
+                                    <span class="skill-level">متوسط</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="75"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-progress-item" data-aos="fade-up" data-aos-delay="300">
+                                <div class="skill-info">
+                                    <span><i class="fab fa-html5"></i> HTML & CSS</span>
+                                    <span class="skill-level">متوسط</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="75"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-progress-item" data-aos="fade-up" data-aos-delay="350">
+                                <div class="skill-info">
+                                    <span><i class="fab fa-node-js"></i> Node.js</span>
+                                    <span class="skill-level">متوسط</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="70"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-progress-item" data-aos="fade-up" data-aos-delay="400">
+                                <div class="skill-info">
+                                    <span><i class="fab fa-php"></i> PHP</span>
+                                    <span class="skill-level">متوسط</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="70"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-progress-item" data-aos="fade-up" data-aos-delay="450">
+                                <div class="skill-info">
+                                    <span><i class="fas fa-database"></i> SQL Server</span>
+                                    <span class="skill-level">متوسط</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="75"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-progress-item" data-aos="fade-up" data-aos-delay="500">
+                                <div class="skill-info">
+                                    <span><i class="fas fa-database"></i> MySQL</span>
+                                    <span class="skill-level">متوسط</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="70"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-progress-item" data-aos="fade-up" data-aos-delay="550">
+                                <div class="skill-info">
+                                    <span><i class="fas fa-database"></i> Entity Framework</span>
+                                    <span class="skill-level">متوسط</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="75"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-progress-item" data-aos="fade-up" data-aos-delay="600">
+                                <div class="skill-info">
+                                    <span><i class="fab fa-git-alt"></i> GIT</span>
+                                    <span class="skill-level">متوسط</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="75"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-progress-item" data-aos="fade-up" data-aos-delay="650">
+                                <div class="skill-info">
+                                    <span><i class="fas fa-exchange-alt"></i> REST API</span>
+                                    <span class="skill-level">متوسط</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="80"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-progress-item" data-aos="fade-up" data-aos-delay="700">
+                                <div class="skill-info">
+                                    <span><i class="fas fa-plug"></i> Dependency Injection</span>
+                                    <span class="skill-level">متوسط</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="75"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-progress-item" data-aos="fade-up" data-aos-delay="750">
+                                <div class="skill-info">
+                                    <span><i class="fas fa-paint-brush"></i> Adobe Photoshop</span>
+                                    <span class="skill-level">متوسط</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="70"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-progress-item" data-aos="fade-up" data-aos-delay="800">
+                                <div class="skill-info">
+                                    <span><i class="fas fa-video"></i> Adobe Premiere</span>
+                                    <span class="skill-level">متوسط</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="70"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-progress-item" data-aos="fade-up" data-aos-delay="850">
+                                <div class="skill-info">
+                                    <span><i class="fab fa-linux"></i> Linux</span>
+                                    <span class="skill-level">مقدماتی</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="50"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5" data-aos="fade-up">
+                    <h2 class="section-title">
+                        <i class="fas fa-folder-open"></i>
+                        پروژه‌های برجسته
+                    </h2>
+                    <p class="section-subtitle">نمونه‌ای از کارهای انجام شده</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <!-- Project 1 -->
+                <div class="col-lg-6 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-card enhanced">
+                        <div class="project-status">
+                            <span class="status-badge completed">تکمیل شده</span>
+                        </div>
+                        <div class="project-image">
+                            <img src="images/projects/expense-tracker.jpg" alt="Expense Tracker" class="img-fluid">
+                            <div class="project-overlay">
+                                <div class="project-info">
+                                    <h5>ویژگی‌های کلیدی:</h5>
+                                    <ul>
+                                        <li>ثبت و دسته‌بندی هزینه‌ها</li>
+                                        <li>گزارش‌گیری تحلیلی</li>
+                                        <li>نمودارهای تعاملی</li>
+                                        <li>رابط کاربری مدرن</li>
+                                    </ul>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-header">
+                                <h4>ExpenseTracker ASP.Net Core MVC در حال تکمیل</h4>
+                                <div class="project-stats">
+                                    <span class="stat-item">
+                                        <i class="fas fa-code-branch"></i>
+                                        15+ Commits
+                                    </span>
+                                    <span class="stat-item">
+                                        <i class="fas fa-star"></i>
+                                        Web App
+                                    </span>
+                                </div>
+                            </div>
+                            <p class="project-description">
+                                اپلیکیشن موبایل جامع برای مدیریت هزینه‌های شخصی با قابلیت ثبت، دسته‌بندی و تحلیل هزینه‌ها. شامل نمودارهای تعاملی و گزارش‌گیری پیشرفته.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag react-native">React Native</span>
+                                <span class="tech-tag typescript">TypeScript</span>
+                                <span class="tech-tag mobile">Mobile</span>
+                                <span class="tech-tag storage">AsyncStorage</span>
+                            </div>
+                            <div class="project-links">
+                                    <a href="https://github.com/AdeptMehdi/ExpenseTracker-ReactNative-TypeScript" class="project-link" target="_blank" title="مشاهده کد منبع">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="#" class="project-link" target="_blank" title="مشاهده دمو">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                    <a href="#" class="project-link" target="_blank" title="جزئیات بیشتر">
+                                        <i class="fas fa-info-circle"></i>
+                                    </a>
+                                </div>
+                            <div class="project-progress">
+                                <div class="progress-info">
+                                    <span>پیشرفت پروژه</span>
+                                    <span>100%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" data-width="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="col-lg-6 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-card enhanced">
+                        <div class="project-status">
+                            <span class="status-badge completed">تکمیل شده</span>
+                        </div>
+                        <div class="project-image">
+                            <img src="images/projects/bookstore.jpg" alt="BookStore" class="img-fluid">
+                            <div class="project-overlay">
+                                <div class="project-info">
+                                    <h5>ویژگی‌های کلیدی:</h5>
+                                    <ul>
+                                        <li>احراز هویت و مجوزدهی</li>
+                                        <li>مدیریت محصولات</li>
+                                        <li>سبد خرید و پرداخت</li>
+                                        <li>پنل مدیریت کامل</li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-header">
+                                <h4>BookStore ASP.NET Core MVC</h4>
+                                <div class="project-stats">
+                                    <span class="stat-item">
+                                        <i class="fas fa-code-branch"></i>
+                                        25+ Commits
+                                    </span>
+                                    <span class="stat-item">
+                                        <i class="fas fa-star"></i>
+                                        Web App
+                                    </span>
+                                </div>
+                            </div>
+                            <p class="project-description">
+                                فروشگاه آنلاین کتاب با معماری چند لایه، شامل سیستم احراز هویت، مدیریت محصولات، سبد خرید و پنل مدیریت پیشرفته.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag aspnet">ASP.NET Core</span>
+                                <span class="tech-tag mvc">MVC</span>
+                                <span class="tech-tag csharp">C#</span>
+                                <span class="tech-tag ef">Entity Framework</span>
+                            </div>
+
+                                <div class="project-links">
+                                    <a href="https://github.com/AdeptMehdi/BookStore-Asp.netCoreMVC" class="project-link" target="_blank" title="مشاهده کد منبع">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="#" class="project-link" target="_blank" title="مشاهده دمو">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                    <a href="#" class="project-link" target="_blank" title="جزئیات بیشتر">
+                                        <i class="fas fa-info-circle"></i>
+                                    </a>
+                                </div>
+
+                            <div class="project-progress">
+                                <div class="progress-info">
+                                    <span>پیشرفت پروژه</span>
+                                    <span>100%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" data-width="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="col-lg-6 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="project-card enhanced">
+                        <div class="project-status">
+                            <span class="status-badge completed">تکمیل شده</span>
+                        </div>
+                        <div class="project-image">
+                            <img src="images/projects/course-webapp.jpg" alt="Course WebApp" class="img-fluid">
+                            <div class="project-overlay">
+                                <div class="project-info">
+                                    <h5>ویژگی‌های کلیدی:</h5>
+                                    <ul>
+                                        <li>ثبت‌نام و مدیریت دوره‌ها</li>
+                                        <li>سیستم کاربران چندسطحه</li>
+                                        <li>پیگیری پیشرفت تحصیلی</li>
+                                        <li>گزارش‌گیری جامع</li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-header">
+                                <h4>Course WebApp</h4>
+                                <div class="project-stats">
+                                    <span class="stat-item">
+                                        <i class="fas fa-code-branch"></i>
+                                        20+ Commits
+                                    </span>
+                                    <span class="stat-item">
+                                        <i class="fas fa-star"></i>
+                                        Education
+                                    </span>
+                                </div>
+                            </div>
+                            <p class="project-description">
+                                سیستم مدیریت دوره‌های آنلاین با قابلیت ثبت‌نام، مدیریت کاربران، پیگیری پیشرفت و گزارش‌گیری جامع.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag aspnet">ASP.NET Core</span>
+                                <span class="tech-tag mvc">MVC</span>
+                                <span class="tech-tag identity">Identity</span>
+                                <span class="tech-tag bootstrap">Bootstrap</span>
+                            </div>
+                            
+                                <div class="project-links">
+                                    <a href="https://github.com/AdeptMehdi/CourseWebapp-With-ASP.NetCoreMVC" class="project-link" target="_blank" title="مشاهده کد منبع">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="#" class="project-link" target="_blank" title="مشاهده دمو">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                    <a href="#" class="project-link" target="_blank" title="جزئیات بیشتر">
+                                        <i class="fas fa-info-circle"></i>
+                                    </a>
+                                </div>
+
+                            <div class="project-progress">
+                                <div class="progress-info">
+                                    <span>پیشرفت پروژه</span>
+                                    <span>100%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" data-width="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="col-lg-6 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="project-card enhanced">
+                        <div class="project-status">
+                            <span class="status-badge completed">تکمیل شده</span>
+                        </div>
+                        <div class="project-image">
+                            <img src="images/projects/library-management.jpg" alt="Library Management" class="img-fluid">
+                            <div class="project-overlay">
+                                <div class="project-info">
+                                    <h5>ویژگی‌های کلیدی:</h5>
+                                    <ul>
+                                        <li>مدیریت کتاب‌ها و اعضا</li>
+                                        <li>سیستم امانت پیشرفته</li>
+                                        <li>گزارش‌گیری و آمار</li>
+                                        <li>رابط کاربری ساده</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-header">
+                                <h4>Library Management</h4>
+                                <div class="project-stats">
+                                    <span class="stat-item">
+                                        <i class="fas fa-code-branch"></i>
+                                        18+ Commits
+                                    </span>
+                                    <span class="stat-item">
+                                        <i class="fas fa-star"></i>
+                                        Management
+                                    </span>
+                                </div>
+                            </div>
+                            <p class="project-description">
+                                سیستم مدیریت کتابخانه با امکانات پیشرفته شامل مدیریت کتاب‌ها، اعضا، امانت و گزارش‌گیری کامل.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag aspnet">ASP.NET Core</span>
+                                <span class="tech-tag mvc">MVC</span>
+                                <span class="tech-tag ef">Entity Framework</span>
+                                <span class="tech-tag sql">SQL Server</span>
+                            </div>
+
+                             <div class="project-links">
+                                    <a href="https://github.com/AdeptMehdi/LibraryManagment-With-Asp.netCoreMVC" class="project-link" target="_blank" title="مشاهده کد منبع">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="#" class="project-link" target="_blank" title="مشاهده دمو">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                    <a href="#" class="project-link" target="_blank" title="جزئیات بیشتر">
+                                        <i class="fas fa-info-circle"></i>
+                                    </a>
+                                </div>
+
+                            <div class="project-progress">
+                                <div class="progress-info">
+                                    <span>پیشرفت پروژه</span>
+                                    <span>100%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" data-width="100"></div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            
+                <!-- GitHub Stats -->
+                <div class="col-lg-8 col-md-12 mb-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="github-stats-card">
+                        <div class="github-header">
+                            <i class="fab fa-github"></i>
+                            <h4>آمار GitHub</h4>
+                        </div>
+                        <div class="github-content">
+                            <div class="github-stat">
+                                <h5>مخازن عمومی</h5>
+                                <span class="stat-number">15</span>
+                            </div>
+                            <div class="github-stat">
+                                <h5>کامیت‌های امسال</h5>
+                                <span class="stat-number">153</span>
+                            </div>
+                            <div class="github-stat">
+                                <h5>عضویت</h5>
+                                <span class="stat-number">2 سال پیش</span>
+                            </div>
+                        </div>
+                        <div class="github-link">
+                            <a href="https://github.com/AdeptMehdi" target="_blank" class="btn btn-outline-primary">
+                                <i class="fab fa-github"></i>
+                                مشاهده پروفایل GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5" data-aos="fade-up">
+                    <h2 class="section-title">
+                        <i class="fas fa-envelope"></i>
+                        تماس با من
+                    </h2>
+                    <p class="section-subtitle">بیایید با هم کار کنیم</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-6 mb-4" data-aos="fade-right">
+                    <div class="contact-info">
+                        <h4>اطلاعات تماس</h4>
+                        <p>برای همکاری یا پرسش در مورد پروژه‌ها، با من در تماس باشید.</p>
+                        
+                        <div class="contact-item">
+                            <i class="fab fa-telegram"></i>
+                            <div>
+                                <h5>تلگرام</h5>
+                                <p>@cobramahdi</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fab fa-github"></i>
+                            <div>
+                                <h5>GitHub</h5>
+                                <p>github.com/AdeptMehdi</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h5>موقعیت</h5>
+                                <p>ایران</p>
+                            </div>
+                        </div>
+                        
+                        <div class="social-links-contact">
+                            <a href="https://t.me/cobramahdi" target="_blank" class="social-link">
+                                <i class="fab fa-telegram"></i>
+                            </a>
+                            <a href="https://github.com/AdeptMehdi" target="_blank" class="social-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" target="_blank" class="social-link">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 mb-4" data-aos="fade-left">
+                    <div class="contact-form">
+                        <form id="contactForm">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">نام</label>
+                                <input type="text" class="form-control" id="name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">ایمیل</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="subject" class="form-label">موضوع</label>
+                                <input type="text" class="form-control" id="subject" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">پیام</label>
+                                <textarea class="form-control" id="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg w-100">
+                                <i class="fas fa-paper-plane"></i>
+                                ارسال پیام
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2025 AdeptMahdi تمامی حقوق محفوظ است.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">ساخته شده با <i class="fas fa-heart text-danger"></i> و <i class="fas fa-coffee"></i></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+</body>
+</html>
