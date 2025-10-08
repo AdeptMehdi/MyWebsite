@@ -20,10 +20,14 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/mobile-first.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/mobile-improvements.css">
+    
+    <!-- Mobile Detection Script (runs immediately) -->
+    <script src="js/mobile-detection.js"></script>
 </head>
 <body>
 
@@ -60,12 +64,7 @@
                             مهارت‌ها
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#github-stats">
-                            <i class="fab fa-github"></i>
-                            گیت‌هاب
-                        </a>
-                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="#projects">
                             <i class="fas fa-folder-open"></i>
@@ -546,241 +545,7 @@
         </div>
     </section>
 
-    <!-- GitHub Stats Section -->
-    <section id="github-stats" class="github-stats-section py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center mb-5" data-aos="fade-up">
-                    <h2 class="section-title">
-                        <i class="fab fa-github"></i>
-                        آمار گیت‌هاب
-                    </h2>
-                    <p class="section-subtitle">نگاهی به فعالیت‌های من در گیت‌هاب</p>
-                </div>
-            </div>
-            
-            <div class="row">
-                <!-- GitHub Profile Card -->
-                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="github-card profile-card">
-                        <div class="github-card-header">
-                            <div class="github-avatar">
-                                <img src="https://github.com/AdeptMehdi.png" alt="GitHub Avatar" class="img-fluid">
-                                <div class="online-indicator"></div>
-                            </div>
-                            <div class="github-info">
-                                <h4>AdeptMehdi</h4>
-                                <p>@AdeptMehdi</p>
-                                <div class="github-badges">
-                                    <span class="badge badge-pro">Pro Developer</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="github-card-body">
-                            <div class="github-stats-grid">
-                                <div class="stat-item">
-                                    <i class="fas fa-code-branch"></i>
-                                    <div class="stat-info">
-                                        <span class="stat-number" data-target="15">0</span>
-                                        <span class="stat-label">مخازن عمومی</span>
-                                    </div>
-                                </div>
-                                <div class="stat-item">
-                                    <i class="fas fa-users"></i>
-                                    <div class="stat-info">
-                                        <span class="stat-number" data-target="5">0</span>
-                                        <span class="stat-label">دنبال‌کنندگان</span>
-                                    </div>
-                                </div>
-                                <div class="stat-item">
-                                    <i class="fas fa-user-plus"></i>
-                                    <div class="stat-info">
-                                        <span class="stat-number" data-target="10">0</span>
-                                        <span class="stat-label">دنبال شده</span>
-                                    </div>
-                                </div>
-                                <div class="stat-item">
-                                    <i class="fas fa-star"></i>
-                                    <div class="stat-info">
-                                        <span class="stat-number" data-target="25">0</span>
-                                        <span class="stat-label">ستاره‌ها</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Contribution Graph -->
-                <div class="col-lg-8 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="github-card contribution-card">
-                        <div class="github-card-header">
-                            <h4>
-                                <i class="fas fa-chart-line"></i>
-                                نمودار مشارکت
-                            </h4>
-                            <div class="contribution-legend">
-                                <span>کم</span>
-                                <div class="legend-squares">
-                                    <div class="legend-square level-0"></div>
-                                    <div class="legend-square level-1"></div>
-                                    <div class="legend-square level-2"></div>
-                                    <div class="legend-square level-3"></div>
-                                    <div class="legend-square level-4"></div>
-                                </div>
-                                <span>زیاد</span>
-                            </div>
-                        </div>
-                        <div class="github-card-body">
-                            <div class="contribution-graph" id="contributionGraph">
-                                <!-- Contribution squares will be generated by JavaScript -->
-                            </div>
-                            <div class="contribution-summary">
-                                <div class="summary-item">
-                                    <span class="summary-number" data-target="150">0</span>
-                                    <span class="summary-label">مشارکت در سال گذشته</span>
-                                </div>
-                                <div class="summary-item">
-                                    <span class="summary-number" data-target="12">0</span>
-                                    <span class="summary-label">هفته فعال</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="row">
-                <!-- Language Stats -->
-                <div class="col-lg-6 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="github-card language-card">
-                        <div class="github-card-header">
-                            <h4>
-                                <i class="fas fa-code"></i>
-                                زبان‌های برنامه‌نویسی
-                            </h4>
-                        </div>
-                        <div class="github-card-body">
-                            <div class="language-stats">
-                                <div class="language-item">
-                                    <div class="language-info">
-                                        <div class="language-color csharp"></div>
-                                        <span class="language-name">C#</span>
-                                        <span class="language-percentage">45%</span>
-                                    </div>
-                                    <div class="language-bar">
-                                        <div class="language-progress csharp" data-width="45"></div>
-                                    </div>
-                                </div>
-                                <div class="language-item">
-                                    <div class="language-info">
-                                        <div class="language-color javascript"></div>
-                                        <span class="language-name">JavaScript</span>
-                                        <span class="language-percentage">25%</span>
-                                    </div>
-                                    <div class="language-bar">
-                                        <div class="language-progress javascript" data-width="25"></div>
-                                    </div>
-                                </div>
-                                <div class="language-item">
-                                    <div class="language-info">
-                                        <div class="language-color typescript"></div>
-                                        <span class="language-name">TypeScript</span>
-                                        <span class="language-percentage">15%</span>
-                                    </div>
-                                    <div class="language-bar">
-                                        <div class="language-progress typescript" data-width="15"></div>
-                                    </div>
-                                </div>
-                                <div class="language-item">
-                                    <div class="language-info">
-                                        <div class="language-color html"></div>
-                                        <span class="language-name">HTML</span>
-                                        <span class="language-percentage">10%</span>
-                                    </div>
-                                    <div class="language-bar">
-                                        <div class="language-progress html" data-width="10"></div>
-                                    </div>
-                                </div>
-                                <div class="language-item">
-                                    <div class="language-info">
-                                        <div class="language-color css"></div>
-                                        <span class="language-name">CSS</span>
-                                        <span class="language-percentage">5%</span>
-                                    </div>
-                                    <div class="language-bar">
-                                        <div class="language-progress css" data-width="5"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Recent Activity -->
-                <div class="col-lg-6 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
-                    <div class="github-card activity-card">
-                        <div class="github-card-header">
-                            <h4>
-                                <i class="fas fa-history"></i>
-                                فعالیت‌های اخیر
-                            </h4>
-                        </div>
-                        <div class="github-card-body">
-                            <div class="activity-timeline">
-                                <div class="activity-item">
-                                    <div class="activity-icon commit">
-                                        <i class="fas fa-code-branch"></i>
-                                    </div>
-                                    <div class="activity-content">
-                                        <p><strong>Pushed</strong> to ExpenseTracker-ReactNative</p>
-                                        <span class="activity-time">2 روز پیش</span>
-                                    </div>
-                                </div>
-                                <div class="activity-item">
-                                    <div class="activity-icon star">
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <div class="activity-content">
-                                        <p><strong>Starred</strong> microsoft/dotnet</p>
-                                        <span class="activity-time">5 روز پیش</span>
-                                    </div>
-                                </div>
-                                <div class="activity-item">
-                                    <div class="activity-icon repo">
-                                        <i class="fas fa-folder"></i>
-                                    </div>
-                                    <div class="activity-content">
-                                        <p><strong>Created</strong> BookStore-Asp.netCoreMVC</p>
-                                        <span class="activity-time">1 هفته پیش</span>
-                                    </div>
-                                </div>
-                                <div class="activity-item">
-                                    <div class="activity-icon commit">
-                                        <i class="fas fa-code-branch"></i>
-                                    </div>
-                                    <div class="activity-content">
-                                        <p><strong>Pushed</strong> to CourseWebapp-With-ASP.NetCoreMVC</p>
-                                        <span class="activity-time">2 هفته پیش</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- GitHub Profile Link -->
-            <div class="row">
-                <div class="col-12 text-center" data-aos="fade-up" data-aos-delay="500">
-                    <a href="https://github.com/AdeptMehdi" target="_blank" class="btn btn-outline-primary btn-lg github-profile-btn">
-                        <i class="fab fa-github"></i>
-                        مشاهده پروفایل کامل در گیت‌هاب
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <!-- Projects Section -->
     <section id="projects" class="projects-section py-5">
@@ -1093,7 +858,7 @@
                             </div>
                             <div class="github-stat">
                                 <h5>عضویت</h5>
-                                <span class="stat-number">2 سال پیش</span>
+                                <span class="stat-number">2</span>
                             </div>
                         </div>
                         <div class="github-link">

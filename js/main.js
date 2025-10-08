@@ -388,7 +388,6 @@ function updateContentToFarsi() {
         'خانه': '#home',
         'درباره من': '#about',
         'مهارت‌ها': '#skills',
-        'گیت‌هاب': '#github-stats',
         'پروژه‌ها': '#projects',
         'تماس': '#contact'
     };
@@ -413,7 +412,6 @@ function updateContentToEnglish() {
         'Home': '#home',
         'About Me': '#about',
         'Skills': '#skills',
-        'GitHub': '#github-stats',
         'Projects': '#projects',
         'Contact': '#contact'
     };
@@ -440,7 +438,7 @@ function updateContentToEnglish() {
     updateAboutContent('en');
     updateSkillsContent('en');
     updateContactContent('en');
-    updateGitHubStatsContent('en');
+
 }
 
 function updateHeroContent(lang) {
@@ -821,7 +819,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initSkillProgressBars();
     initProjectCards();
     initExpertiseCards();
-    initGitHubStats();
+
     
     // Set initial state for expertise cards
     const expertiseCards = document.querySelectorAll('.expertise-card');
