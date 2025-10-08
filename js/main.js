@@ -103,9 +103,16 @@ function updateActiveNavLink() {
 }
 
 // ===== TYPING EFFECT =====
+let typingTimeout;
+
 function initTypingEffect() {
     const typingElement = document.getElementById('typingText');
     if (!typingElement) return;
+    
+    // Clear any existing timeout
+    if (typingTimeout) {
+        clearTimeout(typingTimeout);
+    }
     
     const texts = isRTL ? typingTexts.fa : typingTexts.en;
     let textIndex = 0;
@@ -135,11 +142,11 @@ function initTypingEffect() {
             typingSpeed = 500; // Pause before next text
         }
         
-        setTimeout(typeText, typingSpeed);
+        typingTimeout = setTimeout(typeText, typingSpeed);
     }
     
     // Start typing effect
-    setTimeout(typeText, 1000);
+    typingTimeout = setTimeout(typeText, 1000);
 }
 
 // ===== PARTICLES SYSTEM =====
@@ -147,11 +154,26 @@ function initParticles() {
     const particlesContainer = document.getElementById('particles');
     if (!particlesContainer) return;
     
+    // Disable particles on mobile devices (screen width < 768px)
+    if (window.innerWidth < 768) {
+        particlesContainer.style.display = 'none';
+        return;
+    }
+    
     const particleCount = 50;
     
     for (let i = 0; i < particleCount; i++) {
         createParticle(particlesContainer);
     }
+    
+    // Re-check on window resize
+    window.addEventListener('resize', () => {
+        if (window.innerWidth < 768) {
+            particlesContainer.style.display = 'none';
+        } else {
+            particlesContainer.style.display = 'block';
+        }
+    });
 }
 
 function createParticle(container) {
@@ -348,10 +370,16 @@ function toggleLanguage() {
         updateContentToEnglish();
     }
     
+    // Clear existing typing element content
+    const typingElement = document.getElementById('typingText');
+    if (typingElement) {
+        typingElement.textContent = '';
+    }
+    
     // Restart typing effect with new language
     setTimeout(() => {
         initTypingEffect();
-    }, 500);
+    }, 300);
 }
 
 function updateContentToFarsi() {
@@ -360,6 +388,7 @@ function updateContentToFarsi() {
         'خانه': '#home',
         'درباره من': '#about',
         'مهارت‌ها': '#skills',
+        'گیت‌هاب': '#github-stats',
         'پروژه‌ها': '#projects',
         'تماس': '#contact'
     };
@@ -384,6 +413,7 @@ function updateContentToEnglish() {
         'Home': '#home',
         'About Me': '#about',
         'Skills': '#skills',
+        'GitHub': '#github-stats',
         'Projects': '#projects',
         'Contact': '#contact'
     };
@@ -397,9 +427,20 @@ function updateContentToEnglish() {
         }
     });
     
+    // Update hero buttons
+    const heroButtons = document.querySelectorAll('.hero-buttons .btn');
+    if (heroButtons.length >= 2) {
+        heroButtons[0].innerHTML = '<i class="fas fa-user"></i> Learn More';
+        heroButtons[1].innerHTML = '<i class="fas fa-envelope"></i> Contact Me';
+    }
+    
     // Update other content as needed
     updateHeroContent('en');
     updateSectionTitles('en');
+    updateAboutContent('en');
+    updateSkillsContent('en');
+    updateContactContent('en');
+    updateGitHubStatsContent('en');
 }
 
 function updateHeroContent(lang) {
@@ -648,13 +689,21 @@ function initSkillProgressBars() {
     const progressBars = document.querySelectorAll('.progress-fill');
     
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
+        entries.forEach((entry, index) => {
             if (entry.isIntersecting) {
                 const width = entry.target.getAttribute('data-width');
                 if (width) {
+                    // Add staggered animation delay
                     setTimeout(() => {
                         entry.target.style.width = width + '%';
-                    }, 300);
+                        entry.target.classList.add('animate');
+                        
+                        // Add shimmer effect after progress animation
+                        setTimeout(() => {
+                            entry.target.style.position = 'relative';
+                            entry.target.style.overflow = 'hidden';
+                        }, 500);
+                    }, index * 200 + 300);
                 }
                 // Unobserve after animation to prevent re-triggering
                 observer.unobserve(entry.target);
@@ -662,8 +711,36 @@ function initSkillProgressBars() {
         });
     }, { threshold: 0.3 });
     
-    skillBars.forEach(bar => observer.observe(bar));
-    progressBars.forEach(bar => observer.observe(bar));
+    // Observe all progress bars
+    [...skillBars, ...progressBars].forEach((bar, index) => {
+        // Add stagger class for CSS animations
+        bar.classList.add(`progress-stagger-${(index % 8) + 1}`);
+        observer.observe(bar);
+    });
+}
+
+// ===== ENHANCED PROGRESS BAR ANIMATIONS =====
+function animateProgressBars() {
+    const progressBars = document.querySelectorAll('.skill-progress, .progress-fill');
+    
+    progressBars.forEach((bar, index) => {
+        const width = bar.getAttribute('data-width');
+        if (width) {
+            // Reset width first
+            bar.style.width = '0%';
+            
+            // Animate to target width with delay
+            setTimeout(() => {
+                bar.style.transition = 'width 2s cubic-bezier(0.4, 0, 0.2, 1)';
+                bar.style.width = width + '%';
+                
+                // Add glow effect
+                setTimeout(() => {
+                    bar.classList.add('progress-bar-glow');
+                }, 1000);
+            }, index * 150);
+        }
+    });
 }
 
 // ===== ENHANCED PROJECT CARDS INTERACTIONS =====
@@ -734,15 +811,17 @@ document.addEventListener('DOMContentLoaded', function() {
     initTypingEffect();
     initParticles();
     initSmoothScrolling();
-    initNavbarScroll();
+    initNavigation();
     initLanguageToggle();
     initContactForm();
+    initScrollToTop();
     initAOS();
     
     // Initialize enhanced features
     initSkillProgressBars();
     initProjectCards();
     initExpertiseCards();
+    initGitHubStats();
     
     // Set initial state for expertise cards
     const expertiseCards = document.querySelectorAll('.expertise-card');
@@ -752,3 +831,276 @@ document.addEventListener('DOMContentLoaded', function() {
         card.style.transition = 'all 0.6s ease';
     });
 });
+
+// ===== ADDITIONAL CONTENT UPDATE FUNCTIONS =====
+function updateAboutContent(lang) {
+    const aboutTitle = document.querySelector('#about .section-title');
+    const aboutSubtitle = document.querySelector('#about .section-subtitle');
+    const aboutDescription = document.querySelector('.about-description');
+    const aboutInfo = document.querySelectorAll('.info-item span');
+    const statItems = document.querySelectorAll('.stat-item p');
+    
+    if (lang === 'en') {
+        if (aboutTitle) aboutTitle.innerHTML = '<i class="fas fa-user"></i> About Me';
+        if (aboutSubtitle) aboutSubtitle.textContent = 'Get to know me better';
+        if (aboutDescription) {
+            aboutDescription.textContent = 'I am a backend developer specializing in ASP.NET Core and C#, currently studying Computer Software Engineering. My experience includes developing complex web applications with multi-layered architecture, working with various databases, and implementing modern security systems. I am also learning React Native for mobile app development and am passionate about building scalable software.';
+        }
+        
+        // Update info items
+        if (aboutInfo.length >= 3) {
+            aboutInfo[0].textContent = 'Iran';
+            aboutInfo[1].textContent = 'Telegram: @cobramahdi';
+            aboutInfo[2].textContent = 'Computer Software Student';
+        }
+        
+        // Update stats
+        if (statItems.length >= 3) {
+            statItems[0].textContent = 'Years Experience';
+            statItems[1].textContent = 'Completed Projects';
+            statItems[2].textContent = 'Core Technologies';
+        }
+    }
+}
+
+function updateSkillsContent(lang) {
+    const skillsTitle = document.querySelector('#skills .section-title');
+    const skillsSubtitle = document.querySelector('#skills .section-subtitle');
+    const categoryHeaders = document.querySelectorAll('.category-header h4');
+    
+    if (lang === 'en') {
+        if (skillsTitle) skillsTitle.innerHTML = '<i class="fas fa-cogs"></i> My Skills';
+        if (skillsSubtitle) skillsSubtitle.textContent = 'Technologies I work with';
+        
+        // Update category headers
+        if (categoryHeaders.length >= 4) {
+            categoryHeaders[0].textContent = 'Backend';
+            categoryHeaders[1].textContent = 'Frontend & Mobile';
+            categoryHeaders[2].textContent = 'Database & Security';
+            categoryHeaders[3].textContent = 'Languages';
+        }
+    }
+}
+
+function updateContactContent(lang) {
+    const contactTitle = document.querySelector('#contact .section-title');
+    const contactSubtitle = document.querySelector('#contact .section-subtitle');
+    const contactItems = document.querySelectorAll('.contact-item h5');
+    const formLabels = document.querySelectorAll('.contact-form label');
+    const submitBtn = document.querySelector('#contactForm button[type="submit"]');
+    
+    if (lang === 'en') {
+        if (contactTitle) contactTitle.innerHTML = '<i class="fas fa-envelope"></i> Contact Me';
+        if (contactSubtitle) contactSubtitle.textContent = 'Let\'s get in touch';
+        
+        // Update contact items
+        if (contactItems.length >= 2) {
+            contactItems[0].textContent = 'Email';
+            contactItems[1].textContent = 'Location';
+        }
+        
+        // Update form labels
+        if (formLabels.length >= 4) {
+            formLabels[0].textContent = 'Name';
+            formLabels[1].textContent = 'Email';
+            formLabels[2].textContent = 'Subject';
+            formLabels[3].textContent = 'Message';
+        }
+        
+        if (submitBtn) {
+            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+        }
+    }
+}
+
+// ===== GITHUB STATS FUNCTIONALITY =====
+function initGitHubStats() {
+    initContributionGraph();
+    initLanguageProgressBars();
+    initGitHubCounters();
+}
+
+function initContributionGraph() {
+    const contributionGraph = document.getElementById('contributionGraph');
+    if (!contributionGraph) return;
+    
+    // Generate contribution squares for the past year (53 weeks * 7 days)
+    const totalSquares = 371; // 53 weeks * 7 days
+    const today = new Date();
+    
+    for (let i = 0; i < totalSquares; i++) {
+        const square = document.createElement('div');
+        square.className = 'contribution-square';
+        
+        // Generate random contribution level (0-4)
+        const level = Math.floor(Math.random() * 5);
+        if (level > 0) {
+            square.classList.add(`level-${level}`);
+        }
+        
+        // Add date information
+        const date = new Date(today);
+        date.setDate(date.getDate() - (totalSquares - i));
+        square.setAttribute('data-date', date.toISOString().split('T')[0]);
+        square.setAttribute('data-level', level);
+        
+        // Add tooltip functionality
+        square.addEventListener('mouseenter', (e) => {
+            showContributionTooltip(e, date, level);
+        });
+        
+        square.addEventListener('mouseleave', hideContributionTooltip);
+        
+        contributionGraph.appendChild(square);
+    }
+}
+
+function showContributionTooltip(event, date, level) {
+    const tooltip = document.createElement('div');
+    tooltip.className = 'contribution-tooltip';
+    tooltip.innerHTML = `
+        <div class="tooltip-date">${date.toLocaleDateString('fa-IR')}</div>
+        <div class="tooltip-contributions">${level} مشارکت</div>
+    `;
+    
+    tooltip.style.cssText = `
+        position: absolute;
+        background: rgba(0, 0, 0, 0.9);
+        color: white;
+        padding: 8px 12px;
+        border-radius: 6px;
+        font-size: 0.8rem;
+        z-index: 1000;
+        pointer-events: none;
+        white-space: nowrap;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    `;
+    
+    document.body.appendChild(tooltip);
+    
+    const rect = event.target.getBoundingClientRect();
+    tooltip.style.left = (rect.left + rect.width / 2 - tooltip.offsetWidth / 2) + 'px';
+    tooltip.style.top = (rect.top - tooltip.offsetHeight - 8) + 'px';
+    
+    // Store reference for cleanup
+    event.target._tooltip = tooltip;
+}
+
+function hideContributionTooltip(event) {
+    if (event.target._tooltip) {
+        document.body.removeChild(event.target._tooltip);
+        delete event.target._tooltip;
+    }
+}
+
+function initLanguageProgressBars() {
+    const languageProgressBars = document.querySelectorAll('.language-progress');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                const width = entry.target.getAttribute('data-width');
+                if (width) {
+                    setTimeout(() => {
+                        entry.target.style.width = width + '%';
+                    }, index * 200 + 500);
+                }
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+    
+    languageProgressBars.forEach(bar => observer.observe(bar));
+}
+
+function initGitHubCounters() {
+    const counters = document.querySelectorAll('.stat-number, .summary-number');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+    
+    counters.forEach(counter => observer.observe(counter));
+}
+
+function animateCounter(element) {
+    const target = parseInt(element.getAttribute('data-target')) || parseInt(element.textContent);
+    const duration = 2000;
+    const increment = target / (duration / 16);
+    let current = 0;
+    
+    const updateCounter = () => {
+        current += increment;
+        if (current < target) {
+            element.textContent = Math.floor(current);
+            requestAnimationFrame(updateCounter);
+        } else {
+            element.textContent = target;
+        }
+    };
+    
+    updateCounter();
+}
+
+// ===== GITHUB STATS ENGLISH CONTENT =====
+function updateGitHubStatsContent(lang) {
+    const githubTitle = document.querySelector('#github-stats .section-title');
+    const githubSubtitle = document.querySelector('#github-stats .section-subtitle');
+    const githubCardHeaders = document.querySelectorAll('.github-card-header h4');
+    const statLabels = document.querySelectorAll('.stat-label');
+    const summaryLabels = document.querySelectorAll('.summary-label');
+    const activityContent = document.querySelectorAll('.activity-content p');
+    const activityTimes = document.querySelectorAll('.activity-time');
+    const githubBtn = document.querySelector('.github-profile-btn');
+    
+    if (lang === 'en') {
+        if (githubTitle) githubTitle.innerHTML = '<i class="fab fa-github"></i> GitHub Stats';
+        if (githubSubtitle) githubSubtitle.textContent = 'A look at my GitHub activities';
+        
+        // Update card headers
+        if (githubCardHeaders.length >= 3) {
+            githubCardHeaders[0].innerHTML = '<i class="fas fa-chart-line"></i> Contribution Graph';
+            githubCardHeaders[1].innerHTML = '<i class="fas fa-code"></i> Programming Languages';
+            githubCardHeaders[2].innerHTML = '<i class="fas fa-history"></i> Recent Activity';
+        }
+        
+        // Update stat labels
+        if (statLabels.length >= 4) {
+            statLabels[0].textContent = 'Public Repos';
+            statLabels[1].textContent = 'Followers';
+            statLabels[2].textContent = 'Following';
+            statLabels[3].textContent = 'Stars';
+        }
+        
+        // Update summary labels
+        if (summaryLabels.length >= 2) {
+            summaryLabels[0].textContent = 'Contributions in the last year';
+            summaryLabels[1].textContent = 'Active weeks';
+        }
+        
+        // Update activity content
+        if (activityContent.length >= 4) {
+            activityContent[0].innerHTML = '<strong>Pushed</strong> to ExpenseTracker-ReactNative';
+            activityContent[1].innerHTML = '<strong>Starred</strong> microsoft/dotnet';
+            activityContent[2].innerHTML = '<strong>Created</strong> BookStore-Asp.netCoreMVC';
+            activityContent[3].innerHTML = '<strong>Pushed</strong> to CourseWebapp-With-ASP.NetCoreMVC';
+        }
+        
+        // Update activity times
+        if (activityTimes.length >= 4) {
+            activityTimes[0].textContent = '2 days ago';
+            activityTimes[1].textContent = '5 days ago';
+            activityTimes[2].textContent = '1 week ago';
+            activityTimes[3].textContent = '2 weeks ago';
+        }
+        
+        if (githubBtn) {
+            githubBtn.innerHTML = '<i class="fab fa-github"></i> View Full GitHub Profile';
+        }
+    }
+}
