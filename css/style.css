@@ -49,12 +49,8 @@
     box-sizing: border-box;
 }
 
-html, body {
-  overflow-y: auto;   /* اسکرول صفحه فعال باشه */
-}
-
-* {
-  overflow: visible !important; /* جلوی اسکرول داخلی همه المان‌ها گرفته بشه */
+html {
+  overflow-x: hidden;
 }
 
 
