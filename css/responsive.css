@@ -11,10 +11,6 @@
     z-index: 1030; /* اطمینان از قرارگیری بالای محتوای دیگر */
 }
 
-/* Mobile First: ابتدا استایل‌های اصلی در style.css برای موبایل طراحی شده‌اند.
-   این مدیا کوئری‌ها، استایل‌ها را برای صفحات بزرگ‌تر بهینه می‌کنند.
-*/
-
 /* ===== تبلت و صفحات کوچک‌تر (حداکثر عرض: 991px) ===== */
 @media (max-width: 991px) {
     /* --- منوی ناوبری (Navbar) --- */
@@ -28,7 +24,7 @@
     }
 
     .navbar-nav {
-        /* FIX 2: اصلاح مارجین ul.navbar-nav در حالت collapse (برای رفع تداخل ms-auto) */
+        /* FIX: اصلاح مارجین ul.navbar-nav در حالت collapse (برای رفع تداخل ms-auto) */
         margin: 0 !important; /* خنثی کردن مارجین دسکتاپ در موبایل */
         width: 100%;
     }
@@ -98,6 +94,11 @@
     .section-title {
         font-size: 2rem;
     }
+    
+    /* FIX 2: ممنوع کردن اسکرول افقی برای جلوگیری از بیرون زدگی هر عنصر */
+    body {
+        overflow-x: hidden; 
+    }
 
     /* --- بخش Hero (معرفی) --- */
     .hero-title {
@@ -111,11 +112,14 @@
     .hero-buttons {
         flex-direction: column;
         gap: 15px;
+        /* اطمینان از اینکه کانتینر دکمه‌ها از عرض صفحه تجاوز نمی‌کند */
+        width: 100%;
+        margin: 0;
     }
 
     .hero-buttons .btn {
-        width: 80%;
-        margin: 0 auto;
+        width: 100%; /* FIX 3: دکمه‌ها ۱۰۰٪ عرض می‌گیرند تا margin-auto بیرون‌زدگی ایجاد نکند */
+        margin: 0;
     }
 
     .profile-image {
@@ -163,10 +167,6 @@
         font-size: 1.5rem;
     }
 
-    .hero-buttons .btn {
-        width: 100%;
-    }
-
     .project-card, .skill-category, .contact-form, .github-stats-card {
         padding: 20px;
     }
@@ -182,5 +182,4 @@
 
 
 /* ===== استایل‌های عمومی برای همه دستگاه‌ها ===== */
-/* این استایل‌ها در style.css تعریف شده‌اند و برای همه دستگاه‌ها اعمال می‌شوند
-}
+/* این استایل‌ها در style.css تعریف شده‌اند و برای همه دستگاه‌ها اعمال می‌شوند */
