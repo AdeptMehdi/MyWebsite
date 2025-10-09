@@ -39,9 +39,17 @@
         color: var(--primary-color);
     }
     
-    .lang-toggle {
+    /* ------------------------------------------------------------------- */
+    /* FIX: اصلاح کلاس از .lang-toggle به .language-toggle و اعمال استایل به دکمه داخل آن */
+    /* ------------------------------------------------------------------- */
+    .language-toggle { /* کانتینر زبان */
         margin-top: 15px;
         width: 100%;
+        padding: 0; /* حذف padding از کانتینر و اعمال به دکمه */
+    }
+    
+    .language-toggle .btn { /* دکمه داخل کانتینر */
+        width: 100%; /* اطمینان از ۱۰۰٪ شدن عرض دکمه */
         padding: 12px;
         border-radius: 10px;
         background: rgba(108, 92, 231, 0.1);
@@ -49,12 +57,14 @@
         color: var(--text-primary);
         font-weight: 600;
         transition: all 0.3s ease;
+        text-align: center; /* اطمینان از وسط‌چین بودن متن دکمه */
     }
     
-    .lang-toggle:hover {
+    .language-toggle .btn:hover {
         background: rgba(108, 92, 231, 0.2);
         transform: scale(1.02);
     }
+    /* ------------------------------------------------------------------- */
 }
 
 /* Mobile Hamburger Menu Animation */

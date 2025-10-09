@@ -17,7 +17,11 @@
         border: 1px solid rgba(255, 255, 255, 0.1);
         backdrop-filter: blur(10px);
     }
-
+     /* FIX: اصلاح مارجین ul.navbar-nav در حالت collapse */
+    .navbar-nav {
+        margin: 0 !important; /* این حاشیه ms-auto را در موبایل خنثی می‌کند */
+        width: 100%;
+    }
     .navbar-nav .nav-link {
         padding: 12px 15px !important;
         margin: 5px 0;
