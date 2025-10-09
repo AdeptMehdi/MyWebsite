@@ -50,8 +50,13 @@
 }
 
 html, body {
-  overflow-y: hidden;
+  overflow-y: auto;   /* اسکرول صفحه فعال باشه */
 }
+
+* {
+  overflow: visible !important; /* جلوی اسکرول داخلی همه المان‌ها گرفته بشه */
+}
+
 
 html {
     scroll-behavior: smooth;
