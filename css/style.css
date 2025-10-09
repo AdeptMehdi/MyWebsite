@@ -1454,9 +1454,9 @@ img {
 }
 
 .tech-tag.aspnet {
-    background: rgba(98, 77, 227, 0.1);
-    border-color: #624de3;
-    color: #624de3;
+    background: hsl(248, 100%, 62%);
+    border-color: hsl(248, 100%, 62%);
+    color: hsl(0, 0%, 100%);
 }
 
 .tech-tag.csharp {
