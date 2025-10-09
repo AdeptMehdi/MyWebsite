@@ -159,7 +159,7 @@ img {
 .navbar.scrolled {
     background: rgba(26, 26, 46, 0.5);   /* نیمه‌شفاف */
     backdrop-filter: blur(20px);
-    padding: 0px 0;
+    padding: 1px 0;
     box-shadow: var(--shadow-medium);
 }
 
