@@ -1906,6 +1906,19 @@ textarea.form-control {
 .custom-tooltip {
     position: relative;
 }
-
-.custom-tooltip:hover::after {
-    content: attr(data
+.custom-tooltip .tooltip-text {
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.75);
+    color: var(--text-primary);
+    padding: 8px 12px;
+    border-radius: var(--border-radius-sm);
+    font-size: 0.85rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition-fast);
+    z-index: 10;
+}
