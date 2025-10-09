@@ -221,6 +221,7 @@ img {
     display: flex;
     align-items: center;
     overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 .hero-background {
