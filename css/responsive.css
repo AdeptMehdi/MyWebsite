@@ -3,9 +3,12 @@
    =============================================== */
 
 /* ===============================================
-   FIX 1: اصلاح مشکل بیرون زدگی هدر (Overlap/Sticking Out)
-   این کد به صورت عمومی (خارج از مدیا کوئری) اعمال می‌شود
+   FIX 1: ممنوع کردن اسکرول افقی و رفع بیرون زدگی هدر
    =============================================== */
+body {
+    overflow-x: hidden; /* جلوگیری قاطع از اسکرول افقی */
+}
+
 .navbar.fixed-top {
     width: 100vw; /* تضمین می‌کنیم که هدر ثابت، دقیقاً عرض ویوپورت را پوشش دهد */
     z-index: 1030; /* اطمینان از قرارگیری بالای محتوای دیگر */
@@ -24,8 +27,8 @@
     }
 
     .navbar-nav {
-        /* FIX: اصلاح مارجین ul.navbar-nav در حالت collapse (برای رفع تداخل ms-auto) */
-        margin: 0 !important; /* خنثی کردن مارجین دسکتاپ در موبایل */
+        /* FIX: اصلاح مارجین ul.navbar-nav در حالت collapse */
+        margin: 0 !important; 
         width: 100%;
     }
     
@@ -55,70 +58,37 @@
     .hero-content {
         margin-top: 40px;
     }
-
-    .hero-title {
-        font-size: 2.2rem;
-    }
-
-    .hero-subtitle {
-        font-size: 1.3rem;
-        min-height: 50px;
-    }
-
-    .social-links {
-        justify-content: center;
-    }
-
+    
     .profile-image {
         width: 250px;
         height: 250px;
         margin: 0 auto;
     }
     
-    /* --- بخش درباره من --- */
-    .about-features {
-        margin-top: 40px;
-    }
-
     /* --- بخش مهارت‌ها --- */
     .skills-progress-grid {
-        grid-template-columns: 1fr; /* در تبلت تک ستونه می‌شود */
+        grid-template-columns: 1fr;
     }
-
 }
 
 
 /* ===== فقط موبایل (حداکثر عرض: 767px) ===== */
 @media (max-width: 767px) {
-    /* --- استایل‌های عمومی --- */
     .section-title {
         font-size: 2rem;
     }
-    
-    /* FIX 2: ممنوع کردن اسکرول افقی برای جلوگیری از بیرون زدگی هر عنصر */
-    body {
-        overflow-x: hidden; 
-    }
 
-    /* --- بخش Hero (معرفی) --- */
-    .hero-title {
-        font-size: 1.8rem;
-    }
-    
-    .hero-subtitle {
-        font-size: 1.1rem;
-    }
-
+    /* FIX 2: اصلاح کامل دکمه‌های Hero برای جلوگیری از بیرون زدگی */
     .hero-buttons {
         flex-direction: column;
         gap: 15px;
-        /* اطمینان از اینکه کانتینر دکمه‌ها از عرض صفحه تجاوز نمی‌کند */
         width: 100%;
         margin: 0;
+        padding: 0 15px; /* اضافه کردن پدینگ داخلی برای حفظ فاصله از لبه‌ها */
     }
 
     .hero-buttons .btn {
-        width: 100%; /* FIX 3: دکمه‌ها ۱۰۰٪ عرض می‌گیرند تا margin-auto بیرون‌زدگی ایجاد نکند */
+        width: 100%;
         margin: 0;
     }
 
@@ -129,19 +99,7 @@
     
     /* --- بخش درباره من --- */
     .expertise-grid {
-        grid-template-columns: 1fr; /* کارت‌ها تک ستونه می‌شوند */
-    }
-    
-    .about-stats {
-        justify-content: center;
-        gap: 20px;
-    }
-
-    /* --- بخش پروژه‌ها --- */
-    .project-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
+        grid-template-columns: 1fr;
     }
 
     /* --- فوتر --- */
@@ -170,16 +128,4 @@
     .project-card, .skill-category, .contact-form, .github-stats-card {
         padding: 20px;
     }
-
-    .stat-item h4 {
-        font-size: 2rem;
-    }
-
-    .skills-progress-grid {
-        grid-template-columns: 1fr;
-    }
 }
-
-
-/* ===== استایل‌های عمومی برای همه دستگاه‌ها ===== */
-/* این استایل‌ها در style.css تعریف شده‌اند و برای همه دستگاه‌ها اعمال می‌شوند */
