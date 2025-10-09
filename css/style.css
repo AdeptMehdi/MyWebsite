@@ -49,10 +49,6 @@
     box-sizing: border-box;
 }
 
-html {
-  overflow-x: hidden;
-}
-
 
 html {
     scroll-behavior: smooth;
@@ -65,6 +61,7 @@ body {
     color: var(--text-primary);
     line-height: 1.6;
     overflow-x: hidden;
+    overflow-y: hidden;
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
