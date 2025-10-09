@@ -49,6 +49,10 @@
     box-sizing: border-box;
 }
 
+html, body {
+  overflow-y: hidden;
+}
+
 html {
     scroll-behavior: smooth;
     font-size: 16px; /* Base font size for rem calculations */
