@@ -785,21 +785,58 @@ function initProjectCards() {
 // ===== EXPERTISE CARDS ANIMATION =====
 function initExpertiseCards() {
     const expertiseCards = document.querySelectorAll('.expertise-card');
-    
+
     expertiseCards.forEach((card, index) => {
         card.addEventListener('mouseenter', () => {
             card.style.transform = 'translateY(-10px) scale(1.02)';
         });
-        
+
         card.addEventListener('mouseleave', () => {
             card.style.transform = 'translateY(0) scale(1)';
         });
-        
+
         // Stagger animation on load
         setTimeout(() => {
             card.style.opacity = '1';
             card.style.transform = 'translateY(0)';
         }, index * 100);
+    });
+}
+
+// ===== GRADUAL SKILLS LOADING =====
+function initGradualSkills() {
+    const skillItems = document.querySelectorAll('.skill-progress-item');
+
+    // Hide all skills initially
+    skillItems.forEach(item => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(20px)';
+        item.style.transition = 'all 0.6s ease';
+    });
+
+    // IntersectionObserver for the skills section
+    const skillsSection = document.getElementById('skills');
+    if (skillsSection) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Start gradual reveal
+                    revealSkillsGradually(skillItems);
+                    observer.disconnect(); // Only animate once
+                }
+            });
+        }, { threshold: 0.3 });
+
+        observer.observe(skillsSection);
+    }
+}
+
+function revealSkillsGradually(skillItems) {
+    skillItems.forEach((item, index) => {
+        setTimeout(() => {
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0)';
+        }, index * 300); // 300ms delay between each skill
     });
 }
 
@@ -814,13 +851,13 @@ document.addEventListener('DOMContentLoaded', function() {
     initContactForm();
     initScrollToTop();
     initAOS();
-    
+
     // Initialize enhanced features
     initSkillProgressBars();
     initProjectCards();
     initExpertiseCards();
+    initGradualSkills();
 
-    
     // Set initial state for expertise cards
     const expertiseCards = document.querySelectorAll('.expertise-card');
     expertiseCards.forEach(card => {

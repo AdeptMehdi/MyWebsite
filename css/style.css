@@ -689,7 +689,7 @@ img {
 
 .project-image {
     position: relative;
-    height: 200px;
+    height: 400px;
     overflow: hidden;
 }
 
@@ -748,20 +748,21 @@ img {
 }
 
 .project-content {
-    padding: 25px;
+    padding: 15px;
 }
 
 .project-content h4 {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: 600;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     color: var(--text-primary);
 }
 
 .project-content p {
     color: var(--text-secondary);
-    margin-bottom: 20px;
-    line-height: 1.6;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    line-height: 1.5;
 }
 
 .project-tech {
@@ -1098,36 +1099,46 @@ img {
     :root {
         --section-padding: 60px 0;
     }
-    
+
     .hero-title {
         font-size: 1.8rem;
     }
-    
+
     .hero-subtitle {
         font-size: 1.1rem;
     }
-    
+
     .hero-buttons .btn {
         width: 100%;
         margin: 5px 0;
     }
-    
+
     .navbar-brand {
         font-size: 1.5rem;
     }
-    
+
     .section-title {
         font-size: 1.8rem;
     }
-    
+
     .skill-category,
     .contact-form,
     .github-stats-card {
         padding: 20px;
     }
-    
+
     .project-content {
         padding: 20px;
+    }
+
+    .project-image {
+        height: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .project-image {
+        height: 300px;
     }
 }
 
