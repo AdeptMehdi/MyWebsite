@@ -1374,6 +1374,53 @@ img {
     -webkit-backdrop-filter: blur(9.3px);
     overflow: hidden;
     transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card.enhanced .project-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.project-card.enhanced .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px 12px 16px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid rgba(108, 92, 231, 0.3);
+    position: relative;
+}
+
+.project-card.enhanced .project-header::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+}
+
+.project-card.enhanced .project-title {
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.project-card.enhanced .project-meta {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 4px 10px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-weight: 500;
 }
 
 .project-card.enhanced:hover {

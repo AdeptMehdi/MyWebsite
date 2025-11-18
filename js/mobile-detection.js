@@ -101,63 +101,17 @@
             grids.forEach(grid => {
                 grid.classList.add('mobile-grid');
             });
-            
+
             const progressGrid = document.querySelector('.skills-progress-grid');
             if (progressGrid) {
                 progressGrid.classList.add('mobile-progress-grid');
             }
         }
     }
-    
-    // Handle window resize
-    function handleResize() {
-        // Debounce resize events
-        clearTimeout(window.resizeTimeout);
-        window.resizeTimeout = setTimeout(() => {
-            applyMobileStyles();
-            applyNavigationFixes();
-            applyHeroFixes();
-            applyGridFixes();
-        }, 100);
-    }
-    
-    // Initialize immediately when DOM is ready
-    function init() {
-        applyMobileStyles();
-        
-        // Apply fixes when DOM content is loaded
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => {
-                applyNavigationFixes();
-                applyHeroFixes();
-                applyGridFixes();
-            });
-        } else {
-            applyNavigationFixes();
-            applyHeroFixes();
-            applyGridFixes();
-        }
-        
-        // Handle window resize
-        window.addEventListener('resize', handleResize);
-        
-        // Handle orientation change on mobile devices
-        window.addEventListener('orientationchange', () => {
-            setTimeout(() => {
-                handleResize();
-            }, 100);
-        });
-    }
-    
-    // Run initialization immediately
-    init();
-    
-})();
 
-// ===== ADDITIONAL MOBILE-SPECIFIC CSS CLASSES =====
-// These classes are applied by JavaScript for immediate mobile detection
-
-const mobileCSS = `
+    // Inject mobile CSS
+    function injectMobileCSS() {
+        const mobileCSS = `
 .mobile-device .hero-title {
     font-size: 1.6rem !important;
 }
@@ -220,7 +174,58 @@ const mobileCSS = `
 }
 `;
 
-// Inject mobile CSS immediately
-const style = document.createElement('style');
-style.textContent = mobileCSS;
-document.head.appendChild(style);
+        const style = document.createElement('style');
+        style.textContent = mobileCSS;
+        document.head.appendChild(style);
+    }
+    
+    // Handle window resize
+    function handleResize() {
+        // Debounce resize events
+        clearTimeout(window.resizeTimeout);
+        window.resizeTimeout = setTimeout(() => {
+            applyMobileStyles();
+            applyNavigationFixes();
+            applyHeroFixes();
+            applyGridFixes();
+        }, 100);
+    }
+    
+    // Initialize when DOM is ready
+    function init() {
+        if (document.body) {
+            applyMobileStyles();
+            applyNavigationFixes();
+            applyHeroFixes();
+            applyGridFixes();
+            injectMobileCSS();
+        } else {
+            // Wait for DOM to load if body doesn't exist yet
+            document.addEventListener('DOMContentLoaded', () => {
+                applyMobileStyles();
+                applyNavigationFixes();
+                applyHeroFixes();
+                applyGridFixes();
+                injectMobileCSS();
+            });
+        }
+
+        // Handle window resize
+        window.addEventListener('resize', handleResize);
+
+        // Handle orientation change on mobile devices
+        window.addEventListener('orientationchange', () => {
+            setTimeout(() => {
+                handleResize();
+            }, 100);
+        });
+    }
+
+    // Run initialization when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+
+})();
