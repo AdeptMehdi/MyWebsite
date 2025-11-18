@@ -1383,6 +1383,12 @@ img {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    min-height: 450px;
+    justify-content: flex-start;
+}
+
+.project-card.enhanced .project-progress {
+    margin-top: auto;
 }
 
 .project-card.enhanced .project-header {
