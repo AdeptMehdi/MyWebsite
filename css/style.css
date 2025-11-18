@@ -1694,6 +1694,485 @@ img {
     }
 }
 
+/* ===== MODERN PROJECT CARDS ===== */
+.project-card-modern {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    height: 100%;
+    min-height: 550px;
+}
+
+.project-card-modern::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    z-index: 1;
+}
+
+.project-card-modern:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(108, 92, 231, 0.25);
+    border-color: rgba(108, 92, 231, 0.3);
+}
+
+.project-card-modern:hover .project-decoration .decoration-line {
+    width: 100%;
+}
+
+/* Project Card Header */
+.project-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px 16px;
+    position: relative;
+    z-index: 2;
+}
+
+.project-type-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 6px 12px;
+    border-radius: 16px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.project-type-badge.api {
+    background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.project-type-badge.web {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+}
+
+.project-status-modern {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.status-dot.completed {
+    background: #10b981;
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+}
+
+.status-text {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+}
+
+/* Project Visual Section */
+.project-visual {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+}
+
+.project-image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.project-image-main {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-card-modern:hover .project-image-main {
+    transform: scale(1.1);
+}
+
+.project-gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(108, 92, 231, 0.1) 0%, rgba(139, 130, 246, 0.05) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.project-card-modern:hover .project-gradient-overlay {
+    opacity: 1;
+}
+
+.project-stats-quick {
+    position: absolute;
+    top: 16px;
+    left: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: space-between;
+    z-index: 3;
+}
+
+.stat-quick {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    padding: 8px 12px;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-number {
+    display: block;
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+    margin-top: 2px;
+}
+
+/* Project Content Modern */
+.project-content-modern {
+    padding: 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.project-title-section {
+    text-align: center;
+}
+
+.project-title-main {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 4px;
+    line-height: 1.3;
+}
+
+.project-subtitle-main {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+}
+
+.project-features {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.feature-item i {
+    color: #10b981;
+    font-size: 0.8rem;
+    width: 14px;
+}
+
+/* Project Tech Modern */
+.project-tech-modern {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tech-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: white;
+    padding: 6px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.tech-chip:hover {
+    background: rgba(108, 92, 231, 0.2);
+    border-color: rgba(108, 92, 231, 0.4);
+    transform: translateY(-1px);
+}
+
+.tech-icon {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+}
+
+/* Project Links Modern */
+.project-links-modern {
+    margin-top: auto;
+}
+
+.link-group {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.btn-modern {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 16px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    flex: 1;
+    justify-content: center;
+    min-width: 100px;
+}
+
+.btn-primary-modern {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+}
+
+.btn-primary-modern:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(108, 92, 231, 0.4);
+}
+
+.btn-secondary-modern {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-secondary-modern:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-1px);
+}
+
+/* Project Decoration */
+.project-decoration {
+    padding: 0 24px 20px;
+}
+
+.decoration-line {
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-color), transparent);
+    margin: 0 auto 12px;
+    transition: width 0.4s ease;
+}
+
+.decoration-dots {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+}
+
+.decoration-dots span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: background-color 0.3s ease;
+}
+
+.project-card-modern:hover .decoration-dots span:nth-child(1) {
+    background: var(--primary-color);
+    animation: dot-pulse 1s ease infinite;
+}
+
+.project-card-modern:hover .decoration-dots span:nth-child(2) {
+    background: var(--secondary-color);
+    animation: dot-pulse 1s ease infinite 0.2s;
+}
+
+.project-card-modern:hover .decoration-dots span:nth-child(3) {
+    background: #fd79a8;
+    animation: dot-pulse 1s ease infinite 0.4s;
+}
+
+@keyframes dot-pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.6;
+        transform: scale(1.2);
+    }
+}
+
+/* Project Modal */
+.project-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+.project-modal.active {
+    display: flex;
+}
+
+.project-modal-content {
+    background: rgba(26, 26, 46, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    margin: 20px;
+}
+
+.project-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.project-modal-header h3 {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.modal-close-btn {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.modal-close-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.project-modal-body {
+    padding: 24px;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+}
+
+/* Responsive Design for Modern Cards */
+@media (max-width: 768px) {
+    .project-card-modern {
+        min-height: 480px;
+    }
+
+    .project-visual {
+        height: 180px;
+    }
+
+    .project-card-header {
+        padding: 16px 20px 12px;
+    }
+
+    .project-content-modern {
+        padding: 20px;
+        gap: 12px;
+    }
+
+    .project-title-main {
+        font-size: 1.3rem;
+    }
+
+    .link-group {
+        flex-direction: column;
+    }
+
+    .btn-modern {
+        font-size: 0.75rem;
+        padding: 8px 12px;
+    }
+
+    .project-stats-quick {
+        top: 12px;
+        left: 16px;
+        right: 16px;
+    }
+
+    .stat-quick {
+        padding: 6px 8px;
+    }
+
+    .stat-number {
+        font-size: 0.85rem;
+    }
+
+    .stat-label {
+        font-size: 0.65rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .project-card-modern {
+        min-height: 450px;
+    }
+
+    .project-visual {
+        height: 160px;
+    }
+
+    .project-tech-modern {
+        justify-content: center;
+    }
+}
+
 /* ===== ENHANCED SOFTWARE SKILLS PROGRESS BARS ===== */
 .skills-progress-list {
     display: flex;
@@ -1824,18 +2303,26 @@ img {
     .skills-progress-list {
         gap: 15px;
     }
-    
+
     .skill-progress-item {
         padding: 12px;
+        animation-delay: 0s !important; /* غیرفعال کردن delay برای موبایل */
+        -webkit-animation-delay: 0s !important;
+        -moz-animation-delay: 0s !important;
     }
-    
+
     .skill-progress-item .skill-info span:first-child {
         font-size: 0.9rem;
     }
-    
+
     .skill-progress-item .skill-level {
         font-size: 0.8rem;
         padding: 2px 8px;
+    }
+
+    /* غیرفعال کردن AOS delay برای همه آیتم‌های مهارت در موبایل */
+    .skill-progress-item[data-aos-delay] {
+        data-aos-delay: 0s !important;
     }
 }
 

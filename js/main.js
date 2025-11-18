@@ -1092,18 +1092,18 @@ function updateGitHubStatsContent(lang) {
     const activityContent = document.querySelectorAll('.activity-content p');
     const activityTimes = document.querySelectorAll('.activity-time');
     const githubBtn = document.querySelector('.github-profile-btn');
-    
+
     if (lang === 'en') {
         if (githubTitle) githubTitle.innerHTML = '<i class="fab fa-github"></i> GitHub Stats';
         if (githubSubtitle) githubSubtitle.textContent = 'A look at my GitHub activities';
-        
+
         // Update card headers
         if (githubCardHeaders.length >= 3) {
             githubCardHeaders[0].innerHTML = '<i class="fas fa-chart-line"></i> Contribution Graph';
             githubCardHeaders[1].innerHTML = '<i class="fas fa-code"></i> Programming Languages';
             githubCardHeaders[2].innerHTML = '<i class="fas fa-history"></i> Recent Activity';
         }
-        
+
         // Update stat labels
         if (statLabels.length >= 4) {
             statLabels[0].textContent = 'Public Repos';
@@ -1111,13 +1111,13 @@ function updateGitHubStatsContent(lang) {
             statLabels[2].textContent = 'Following';
             statLabels[3].textContent = 'Stars';
         }
-        
+
         // Update summary labels
         if (summaryLabels.length >= 2) {
             summaryLabels[0].textContent = 'Contributions in the last year';
             summaryLabels[1].textContent = 'Active weeks';
         }
-        
+
         // Update activity content
         if (activityContent.length >= 4) {
             activityContent[0].innerHTML = '<strong>Pushed</strong> to ExpenseTracker-ReactNative';
@@ -1125,7 +1125,7 @@ function updateGitHubStatsContent(lang) {
             activityContent[2].innerHTML = '<strong>Created</strong> BookStore-Asp.netCoreMVC';
             activityContent[3].innerHTML = '<strong>Pushed</strong> to CourseWebapp-With-ASP.NetCoreMVC';
         }
-        
+
         // Update activity times
         if (activityTimes.length >= 4) {
             activityTimes[0].textContent = '2 days ago';
@@ -1133,9 +1133,390 @@ function updateGitHubStatsContent(lang) {
             activityTimes[2].textContent = '1 week ago';
             activityTimes[3].textContent = '2 weeks ago';
         }
-        
+
         if (githubBtn) {
             githubBtn.innerHTML = '<i class="fab fa-github"></i> View Full GitHub Profile';
         }
     }
 }
+
+// ===== PROJECT MODAL FUNCTIONS =====
+function showProjectModal(projectId) {
+    const modal = document.getElementById('projectModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalContent = document.getElementById('modalContent');
+
+    const projects = {
+        1: {
+            title: 'ExpenseTracker - اپلیکیشن مدیریت هزینه‌ها',
+            content: `
+                <div class="project-modal-details">
+                    <h4>🔍 ویژگی‌های کلیدی:</h4>
+                    <ul>
+                        <li>ثبت و دسته‌بندی هوشمند هزینه‌ها</li>
+                        <li>گزارش‌گیری تحلیلی پیشرفته با نمودارها</li>
+                        <li>رابط کاربری مدرن و کاربرپسند</li>
+                        <li>۴٫۸ امتیاز از کاربران</li>
+                        <li>بیش از ۱۰۰۰ کاربر فعال</li>
+                    </ul>
+
+                    <h4>💻 تکنولوژی‌های استفاده شده:</h4>
+                    <div class="modal-tech-list">
+                        <span class="modal-tech-chip"><i class="fab fa-react"></i> React Native</span>
+                        <span class="modal-tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-plain.svg" alt="TypeScript" class="tech-icon-small"> TypeScript</span>
+                        <span class="modal-tech-chip"><i class="fas fa-mobile-alt"></i> AsyncStorage</span>
+                    </div>
+
+                    <h4>📱 پلتفرم‌ها:</h4>
+                    <p>iOS و Android</p>
+
+                    <h4>🏆 دستاوردها:</h4>
+                    <ul>
+                        <li>۵ ستاره در گوگل پلی</li>
+                        <li>افزایش بهره‌وری کاربران تا ۷۰%</li>
+                        <li>رابط کاربری پیشرو در صنعت</li>
+                    </ul>
+
+                    <div class="modal-links">
+                        <a href="https://github.com/AdeptMehdi/ExpenseTracker-ReactNative-TypeScript" target="_blank" class="modal-btn modal-btn-primary">
+                            <i class="fab fa-github"></i> مشاهده سورس کد
+                        </a>
+                        <a href="#" target="_blank" class="modal-btn modal-btn-secondary">
+                            <i class="fab fa-google-play"></i> دریافت از پلی استور
+                        </a>
+                    </div>
+                </div>
+            `
+        },
+        2: {
+            title: 'Shortner API - کوتاه‌کننده لینک امن',
+            content: `
+                <div class="project-modal-details">
+                    <h4>🔒 ویژگی‌های امنیتی:</h4>
+                    <ul>
+                        <li>Rate Limiting پیشرفته</li>
+                        <li>اعتبارسنجی URL بصورت Real-time</li>
+                        <li>لاگ‌گیری کامل عملیات</li>
+                        <li>پوشش تست ۹۹ درصدی</li>
+                    </ul>
+
+                    <h4>🧪 تکنولوژی‌های تست:</h4>
+                    <div class="modal-tech-list">
+                        <span class="modal-tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg" alt="Jest" class="tech-icon-small"> Jest</span>
+                        <span class="modal-tech-chip"><i class="fas fa-flask"></i> Supertest</span>
+                        <span class="modal-tech-chip"><i class="fas fa-shield-alt"></i> Helmet</span>
+                        <span class="modal-tech-chip"><i class="fas fa-cors"></i> CORS</span>
+                    </div>
+
+                    <h4>⚡ عملکرد:</h4>
+                    <ul>
+                        <li>زمان پاسخ کمتر از ۱۰۰ms</li>
+                        <li>۸ تست موفق کامل (۱۰۰% pass)</li>
+                        <li>آبوت‌گیری روزانه ۱۰ هزار درخواست</li>
+                    </ul>
+
+                    <h4>📊 آمار استفاده:</h4>
+                    <div class="stat-grid">
+                        <div class="stat-item-modal">۱۲۰۰۰۰+ لینک کوتاه شده</div>
+                        <div class="stat-item-modal">۹۹.۹% uptime</div>
+                        <div class="stat-item-modal">۱۰+ وبسایت ادغام شده</div>
+                    </div>
+
+                    <div class="modal-links">
+                        <a href="https://github.com/AdeptMehdi/Shortner-With-Expressjs" target="_blank" class="modal-btn modal-btn-primary">
+                            <i class="fab fa-github"></i> مشاهده API Docs
+                        </a>
+                        <button class="modal-btn modal-btn-secondary" onclick="testAPI()">
+                            <i class="fas fa-play"></i> تست API
+                        </button>
+                    </div>
+                </div>
+            `
+        },
+        3: {
+            title: 'Course WebApp - پلتفرم آموزشی جامع',
+            content: `
+                <div class="project-modal-details">
+                    <h4>🎓 امکانات آموزشی:</h4>
+                    <ul>
+                        <li>سیستم مدیریت دوره‌های آموزشی</li>
+                        <li>ثبت‌نام و پرداخت آنلاین</li>
+                        <li>سیستم امتیازدهی و نظرات</li>
+                        <li>پیگیری پیشرفت تحصیلی</li>
+                        <li>گزارش‌گیری برای اساتید</li>
+                    </ul>
+
+                    <h4>🏗️ معماری نرم‌افزار:</h4>
+                    <div class="modal-tech-list">
+                        <span class="modal-tech-chip"><i class="fab fa-microsoft"></i> ASP.NET Core 6</span>
+                        <span class="modal-tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-plain.svg" alt="C#" class="tech-icon-small"> C# MVC</span>
+                        <span class="modal-tech-chip"><i class="fas fa-database"></i> SQL Server</span>
+                        <span class="modal-tech-chip"><i class="fas fa-shield-alt"></i> Identity Framework</span>
+                        <span class="modal-tech-chip"><i class="fab fa-bootstrap"></i> Bootstrap 5</span>
+                    </div>
+
+                    <h4>👥 مدل‌های کاربر:</h4>
+                    <ul>
+                        <li>دانشجو - دسترسی به دوره‌ها</li>
+                        <li>استاد - مدیریت دوره‌ها و نمرات</li>
+                        <li>مدیر - کنترل کامل سیستم</li>
+                        <li>ادمین - تنظیمات سیستمی</li>
+                    </ul>
+
+                    <h4>📈 آمار و ارقام:</h4>
+                    <div class="stat-grid">
+                        <div class="stat-item-modal">۵۰۰+ دوره فعال</div>
+                        <div class="stat-item-modal">۱۰۰۰۰+ دانش‌آموخته</div>
+                        <div class="stat-item-modal">۹۵% رضایت کاربران</div>
+                    </div>
+
+                    <h4>🔧 ویژگی‌های فنی:</h4>
+                    <ul>
+                        <li>Authentication & Authorization</li>
+                        <li>RESTful API Design</li>
+                        <li>Entity Framework Code First</li>
+                        <li>Session Management</li>
+                        <li>File Upload System</li>
+                    </ul>
+
+                    <div class="modal-links">
+                        <a href="https://github.com/AdeptMehdi/CourseWebapp-With-ASP.NetCoreMVC" target="_blank" class="modal-btn modal-btn-primary">
+                            <i class="fab fa-github"></i> مشاهده سورس کد
+                        </a>
+                        <a href="#" target="_blank" class="modal-btn modal-btn-secondary">
+                            <i class="fas fa-external-link-alt"></i> دمو زنده
+                        </a>
+                    </div>
+                </div>
+            `
+        },
+        4: {
+            title: 'Weather App - اپلیکیشن آب و هوا',
+            content: `
+                <div class="project-modal-details">
+                    <h4>🌤️ ویژگی‌های طراحی:</h4>
+                    <ul>
+                        <li>Glassmorphism UI Design</li>
+                        <li>انیمیشن‌های پویا بر اساس آب و هوا</li>
+                        <li>رابط کاربری Responsive</li>
+                        <li> predictive data caching</li>
+                        <li>Offline mode support</li>
+                    </ul>
+
+                    <h4>🎨 تکنولوژی‌های frontend:</h4>
+                    <div class="modal-tech-list">
+                        <span class="modal-tech-chip"><i class="fab fa-html5"></i> HTML5</span>
+                        <span class="modal-tech-chip"><i class="fab fa-css3-alt"></i> CSS3</span>
+                        <span class="modal-tech-chip"><i class="fab fa-js-square"></i> JavaScript ES6</span>
+                        <span class="modal-tech-chip"><i class="fab fa-bootstrap"></i> Bootstrap 5</span>
+                    </div>
+
+                    <h4>🔧 API Backend:</h4>
+                    <div class="modal-tech-list">
+                        <span class="modal-tech-chip"><i class="fab fa-node-js"></i> Node.js</span>
+                        <span class="modal-tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express" class="tech-icon-small"> Express.js</span>
+                        <span class="modal-tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg" alt="Jest" class="tech-icon-small"> Jest Testing</span>
+                        <span class="modal-tech-chip"><i class="fas fa-server"></i> REST API</span>
+                    </div>
+
+                    <h4>🎯 تجربه کاربری:</h4>
+                    <ul>
+                        <li>Background animations synced with weather</li>
+                        <li>Glass morphism effects</li>
+                        <li>Real-time weather updates</li>
+                        <li>10+ supported cities</li>
+                        <li>100% responsive design</li>
+                    </ul>
+
+                    <h4>📱 پشتیبانی دستگاه‌ها:</h4>
+                    <div class="device-support">
+                        <span class="device-chip"><i class="fas fa-desktop"></i> Desktop</span>
+                        <span class="device-chip"><i class="fas fa-tablet-alt"></i> Tablet</span>
+                        <span class="device-chip"><i class="fas fa-mobile-alt"></i> Mobile</span>
+                    </div>
+
+                    <h4>🌟 ویژگی‌های منحصر به فرد:</h4>
+                    <ul>
+                        <li>Dynamic CSS gradients</li>
+                        <li>Weather-based particles</li>
+                        <li>Mock API with realistic data</li>
+                        <li>Full Jest test coverage</li>
+                        <li>Modern ES6+ features</li>
+                    </ul>
+
+                    <div class="modal-links">
+                        <a href="https://github.com/AdeptMehdi/Weather-App" target="_blank" class="modal-btn modal-btn-primary">
+                            <i class="fab fa-github"></i> مشاهده کد کامل
+                        </a>
+                        <button class="modal-btn modal-btn-secondary" onclick="openWeatherDemo()">
+                            <i class="fas fa-cloud-sun"></i> مشاهده پیش‌نمایش
+                        </button>
+                    </div>
+                </div>
+            `
+        }
+    };
+
+    const project = projects[projectId];
+    if (!project) return;
+
+    modalTitle.textContent = project.title;
+    modalContent.innerHTML = project.content;
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Prevent scrolling
+}
+
+function closeProjectModal() {
+    const modal = document.getElementById('projectModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto'; // Restore scrolling
+}
+
+// ===== MODAL HELPER FUNCTIONS =====
+function testAPI() {
+    alert('در حال باز کردن محیط تست API...\n\nبرای امتحان API می‌توانید از ابزارهایی مانند Postman یا برنامه‌های مشابه استفاده کنید.');
+}
+
+function openWeatherDemo() {
+    // Create a simple weather demo
+    const demoWindow = window.open('', '_blank', 'width=400,height=600');
+    demoWindow.document.write(`
+        <!DOCTYPE html>
+        <html lang="fa" dir="rtl">
+        <head>
+            <meta charset="UTF-8">
+            <title>Weather App Demo</title>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+            <style>
+                body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center; }
+                .weather-card { background: rgba(255,255,255,0.1); backdrop-filter: blur(20px); border-radius: 20px; padding: 20px; margin: 20px; }
+                .temp { font-size: 4rem; font-weight: bold; margin: 10px 0; }
+                .condition { font-size: 1.5rem; margin-bottom: 10px; }
+            </style>
+        </head>
+        <body>
+            <div class="weather-card">
+                <h1>تهران</h1>
+                <div class="temp">25°C</div>
+                <div class="condition">
+                    <i class="fas fa-sun"></i> آفتابی
+                </div>
+                <p>بهترین نمونه از طراحی Glassmorphism</p>
+            </div>
+        </body>
+        </html>
+    `);
+}
+
+// ===== PROJECT MODAL STYLES =====
+document.addEventListener('DOMContentLoaded', function() {
+    const modalStyles = document.createElement('style');
+    modalStyles.textContent = `
+        .project-modal-details h4 {
+            color: var(--primary-color);
+            margin: 20px 0 10px 0;
+            font-size: 1.1rem;
+        }
+
+        .modal-tech-list, .device-support {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 10px 0 20px 0;
+        }
+
+        .modal-tech-chip, .device-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(108, 92, 231, 0.1);
+            border: 1px solid rgba(108, 92, 231, 0.2);
+            color: var(--text-primary);
+            padding: 6px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .tech-icon-small {
+            width: 14px;
+            height: 14px;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .stat-item-modal {
+            background: rgba(108, 92, 231, 0.1);
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .modal-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .modal-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            min-width: 120px;
+            justify-content: center;
+        }
+
+        .modal-btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .modal-btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(108, 92, 231, 0.4);
+        }
+
+        .modal-btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .modal-btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .project-modal-details ul {
+            padding-right: 20px;
+        }
+
+        .project-modal-details li {
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .modal-links {
+                flex-direction: column;
+            }
+
+            .modal-btn {
+                width: 100%;
+            }
+        }
+    `;
+    document.head.appendChild(modalStyles);
+});
