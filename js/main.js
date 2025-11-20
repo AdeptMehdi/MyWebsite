@@ -297,7 +297,7 @@ function showNotification(message, type = 'info') {
         padding: 15px 20px;
         border-radius: 8px;
         box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        z-index: 10000;
+        z-index: 1000;
         transform: translateX(100%);
         transition: transform 0.3s ease;
     `;
@@ -446,7 +446,7 @@ function updateHeroContent(lang) {
     const heroDescription = document.querySelector('.hero-description');
     
     if (lang === 'fa') {
-        heroTitle.innerHTML = 'سلام، من <span class=\"highlight\">مهدی</span> هستم';
+        heroTitle.innerHTML = 'سلام،  <span class=\"highlight\">مهدی</span> هستم';
         heroDescription.textContent = '"کد مثل طنز است. وقتی باید توضیحش بدی، بده."';
     } else {
         heroTitle.innerHTML = 'Hi, I\'m <span class=\"highlight\">Mahdi</span>';
@@ -806,28 +806,34 @@ function initExpertiseCards() {
 // ===== GRADUAL SKILLS LOADING =====
 function initGradualSkills() {
     const skillItems = document.querySelectorAll('.skill-progress-item');
+    const isMobile = window.innerWidth < 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-    // Hide all skills initially
-    skillItems.forEach(item => {
-        item.style.opacity = '0';
-        item.style.transform = 'translateY(20px)';
-        item.style.transition = 'all 0.6s ease';
-    });
+    if (!isMobile) {
+        // Desktop: Hide all skills initially for gradual reveal
+        skillItems.forEach(item => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            item.style.transition = 'all 0.6s ease';
+        });
 
-    // IntersectionObserver for the skills section
-    const skillsSection = document.getElementById('skills');
-    if (skillsSection) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Start gradual reveal
-                    revealSkillsGradually(skillItems);
-                    observer.disconnect(); // Only animate once
-                }
-            });
-        }, { threshold: 0.3 });
+        // IntersectionObserver for the skills section
+        const skillsSection = document.getElementById('skills');
+        if (skillsSection) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Start gradual reveal
+                        revealSkillsGradually(skillItems);
+                        observer.disconnect(); // Only animate once
+                    }
+                });
+            }, { threshold: 0.3 });
 
-        observer.observe(skillsSection);
+            observer.observe(skillsSection);
+        }
+    } else {
+        // Mobile: Show skills immediately without hiding
+        console.log('Mobile: skills displayed immediately');
     }
 }
 
@@ -838,6 +844,28 @@ function revealSkillsGradually(skillItems) {
             item.style.transform = 'translateY(0)';
         }, index * 300); // 300ms delay between each skill
     });
+}
+
+// ===== MOBILE SKILLS FIX =====
+function initMobileSkillsFix() {
+    const isMobile = window.innerWidth < 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+    if (isMobile) {
+        // On mobile, display progress bars immediately without animation delays
+        const skillBars = document.querySelectorAll('.skill-progress');
+
+        skillBars.forEach((bar) => {
+            const width = bar.getAttribute('data-width');
+            if (width) {
+                bar.style.width = width + '%';
+                bar.classList.add('animate');
+            }
+        });
+
+        console.log('Mobile skills: displayed immediately without animation delay');
+    } else {
+        console.log('Desktop device: using standard IntersectionObserver');
+    }
 }
 
 // ===== INITIALIZE ENHANCED FEATURES =====
@@ -857,6 +885,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initProjectCards();
     initExpertiseCards();
     initGradualSkills();
+    initMobileSkillsFix(); // Add mobile skills fix
 
     // Set initial state for expertise cards
     const expertiseCards = document.querySelectorAll('.expertise-card');
